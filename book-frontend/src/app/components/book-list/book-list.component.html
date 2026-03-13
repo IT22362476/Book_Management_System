@@ -1,0 +1,85 @@
+<div class="list-header">
+  <h2>Your Collection</h2>
+  <p class="book-count" *ngIf="books.length > 0">{{books.length}} {{books.length === 1 ? 'book' : 'books'}} in your library</p>
+  <p class="empty-state" *ngIf="books.length === 0">Your collection is empty. Add your first book!</p>
+</div>
+
+<div class="table-container" *ngIf="books.length > 0">
+  <table class="book-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Publication Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" [class.editing]="editId === book.id">
+        <td class="title-col">
+          <input
+            *ngIf="editId === book.id"
+            class="edit-input"
+            [(ngModel)]="book.title"
+            placeholder="Book title">
+          <span *ngIf="editId !== book.id" class="book-title">{{book.title}}</span>
+        </td>
+
+        <td>
+          <input
+            *ngIf="editId === book.id"
+            class="edit-input"
+            [(ngModel)]="book.author"
+            placeholder="Author name">
+          <span *ngIf="editId !== book.id">{{book.author}}</span>
+        </td>
+
+        <td>
+          <input
+            *ngIf="editId === book.id"
+            class="edit-input"
+            [(ngModel)]="book.isbn"
+            placeholder="ISBN">
+          <span *ngIf="editId !== book.id" class="isbn">{{book.isbn}}</span>
+        </td>
+
+        <td>
+          <input
+            *ngIf="editId === book.id"
+            class="edit-input"
+            type="date"
+            [(ngModel)]="book.publicationDate">
+          <span *ngIf="editId !== book.id">{{book.publicationDate}}</span>
+        </td>
+
+        <td class="actions-col">
+          <div class="action-buttons">
+            <button
+              *ngIf="editId !== book.id"
+              class="btn-edit"
+              (click)="startEdit(book.id!)"
+              title="Edit book">
+              Edit
+            </button>
+
+            <button
+              *ngIf="editId === book.id"
+              class="btn-save"
+              (click)="updateBook(book)"
+              title="Save changes">
+              Save
+            </button>
+
+            <button
+              class="btn-delete"
+              (click)="deleteBook(book.id!)"
+              title="Delete book">
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

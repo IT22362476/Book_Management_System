@@ -1,0 +1,93 @@
+<div class="form-header">
+  <h2>Add New Book</h2>
+  <p class="form-description">Fill in the details to add a book to your collection</p>
+</div>
+
+<form #bookForm="ngForm" (ngSubmit)="addBook()" class="book-form">
+
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      id="title"
+      type="text"
+      [(ngModel)]="book.title"
+      name="title"
+      #title="ngModel"
+      placeholder="Enter book title"
+      required
+      minlength="2">
+
+    <small class="error" *ngIf="title.invalid && title.touched">
+      <span *ngIf="title.errors?.['required']">Title is required</span>
+      <span *ngIf="title.errors?.['minlength']">Title must be at least 2 characters</span>
+    </small>
+  </div>
+
+  <!-- Author -->
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input
+      id="author"
+      type="text"
+      [(ngModel)]="book.author"
+      name="author"
+      #author="ngModel"
+      placeholder="Enter author name"
+      required
+      minlength="3">
+
+    <small class="error" *ngIf="author.invalid && author.touched">
+      <span *ngIf="author.errors?.['required']">Author is required</span>
+      <span *ngIf="author.errors?.['minlength']">Author must be at least 3 characters</span>
+    </small>
+  </div>
+
+  <!-- ISBN -->
+  <div class="form-group">
+    <label for="isbn">ISBN</label>
+    <input
+      id="isbn"
+      type="text"
+      [(ngModel)]="book.isbn"
+      name="isbn"
+      #isbn="ngModel"
+      placeholder="Enter ISBN number"
+      required
+      pattern="^[0-9\-]{10,17}$">
+
+    <small class="error" *ngIf="isbn.invalid && isbn.touched">
+      <span *ngIf="isbn.errors?.['required']">ISBN is required</span>
+      <span *ngIf="isbn.errors?.['pattern']">Invalid ISBN format</span>
+    </small>
+  </div>
+
+  <!-- Publication Date -->
+  <div class="form-group">
+    <label for="date">Publication Date</label>
+    <input
+      id="date"
+      type="date"
+      [(ngModel)]="book.publicationDate"
+      name="publicationDate"
+      #date="ngModel"
+      required>
+
+    <small class="error" *ngIf="date.invalid && date.touched">
+      Publication date is required
+    </small>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="btn-primary"
+    [disabled]="bookForm.invalid">
+
+    <span class="btn-icon">+</span>
+    Add
+  </button>
+
+</form>
+
+<!-- test change -->
