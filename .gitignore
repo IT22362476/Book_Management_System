@@ -1,2 +1,14 @@
+# .NET
+bin/
+obj/
+
+# Angular
 node_modules/
-.env
+.angular/
+dist/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
