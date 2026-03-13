@@ -105,3 +105,4 @@
 /Users/denuwansathsara/Documents/Enhanzer/BookApi/obj/Debug/net8.0/BookApi.pdb
 /Users/denuwansathsara/Documents/Enhanzer/BookApi/obj/Debug/net8.0/BookApi.genruntimeconfig.cache
 /Users/denuwansathsara/Documents/Enhanzer/BookApi/obj/Debug/net8.0/ref/BookApi.dll
+/Users/denuwansathsara/Documents/Enhanzer/BookApi/obj/Debug/net8.0/BookApi.sourcelink.json
